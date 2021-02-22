@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	.container{
+		margin: 20px auto;
+		width: 90%;
+		display: grid;
+		grid-template-areas:
+		'site_title site_title nav1 nav2 nav3'
+		'post_title post_title post_title post_title sidebar'
+		'post_meta main_content main_content main_content sidebar '
+		'post_meta main_content main_content main_content ads '
+		'post_meta main_img main_img main_img ads'
+		'post_meta main_img main_img main_img other'
+		'fotter fotter fotter fotter fotter';
+		gap: 10px;
+
+	}
+	.site_title{
+		padding: 20px;
+		grid-area: site_title;
+		background-color: yellow;
+	}
+	.nav1{
+		background-color: #F387B7;
+		grid-area: nav1;
+		padding: 20px;
+	}
+	.nav2{
+		background-color: #F387B7;
+		grid-area: nav2;
+		padding: 20px;
+
+	}
+	.nav3{
+		background-color: #F387B7;
+		grid-area: nav3;
+		padding: 20px;
+	}
+	.post_title{
+		
+		grid-area: post_title;
+		padding: 70px;
+		background-color: #7CCAE4;
+	}
+	.sidebar{
+		grid-area: sidebar;
+		padding: 60px;
+		background-color: #E67A10;
+	}
+	.post_meta{
+		grid-area: post_meta;
+		padding:70px; 
+		background-color: #6CDB81;
+	}
+	.ads{
+		grid-area: ads;
+		padding: 60px;
+		background-color: green;
+	}
+	.main_content
+	{
+		grid-area: main_content;
+		padding: 70px;
+		background-color: #BCBBBB;
+	}
+	.main_img{
+		padding: 70px;
+		grid-area: main_img;
+		background-color: yellow;
+	}
+	.other{
+		padding: 60px;
+		grid-area: other;
+		background-color: #B713B9;
+	}
+	.fotter{
+		grid-area: fotter;
+		padding: 40px;
+		background-color: #755123;
+
+	}
+	@media screen and (max-width:768px)
+	{
+		.container{
+			margin: 20px auto;
+			width: 90%;
+			display: grid;
+			grid-template-areas:
+			'posttitle posttitle potstitle posttitle';
+		}
+	}
+	@media screen  and (max-width: 575px)
+	{
+		.container{
+			margin: 20px auto;
+			width: 90%;
+			display: grid;
+			grid-template-areas:
+			'site_title site_title site_title site_title site_title'
+			'sidebar sidebar sidebar sidebar sidebar '
+			'post_title post_title post_title post_title post_title'
+			'post_meta post_meta post_meta post_meta post_meta '
+			'main_content main_content main_content main_content main_content'
+			'ads ads ads ads ads'
+			'main_img main_img main_img main_img main_img'
+			'other other other other other'
+			'nav1 nav1 nav2 nav3 nav3'
+			'fotter fotter fotter fotter fotter';
+		}
+		
+
+
+	}
+</style>
+<body>
+	<div class="container">
+		<div class="site_title">SiteTitle</div>
+		<div class="nav1">Nav1</div>
+		<div class="nav2">Nav2</div>
+		<div class="nav3">Nav3</div>
+		<div class="post_title">Post Title</div>
+		<div class="sidebar">Side Bar</div>
+		<div class="post_meta">Post Meta</div>
+		<div class="main_content">Main Content</div>
+		<div class="ads">Ads</div>
+		<div class="main_img">Main Content Image</div>
+		<div class="other">Other Stuffs</div>
+		<div class="fotter">@2018 fotter</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body{
+			font-family: sans-serif;
+		}
+		.picker{
+			margin-left: 30%;
+			margin-top: 10%;
+		}
+		input{
+			display: block;
+			width: 50%;
+		}
+		#display{
+			width: 50%;
+			height: 200px;
+			background-color: red;
+			margin-bottom: 20px;
+		}
+		h2{
+			display: inline;
+			color: black;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="picker">
+		<h2>RGB</h2>
+		<h2 id="value">(0,0,0)</h2>
+		<div id="display">
+			
+
+		</div>
+		<div>
+			<label for="red">Red</label>
+			<input type="range" min="0" max="255" id="red" value="0">
+			<label for="green">Green</label>
+			<input type="range" min="0" max="255" id="green" value="0">
+			<label for="blue">Blue</label>
+			<input type="range" min="0" max="255" id="blue" value="0">
+		</div>
+	</div>
+	
+</body>
+
+<script type="text/javascript">
+	let input = document.querySelectorAll("input");
+
+	for(let i = 0 ; i < input.length ; i++) 
+	{
+		input[i].addEventListener('input',function() {
+
+			let red = document.getElementById("red").value;
+			let blue = document.getElementById("blue").value;
+			let green = document.getElementById("green").value;
+
+
+			let display = document.getElementById("display");
+			display.style.backgroundColor = "rgb("+red+","+green+","+blue+")";
+
+			let text = document.getElementById("value");
+			text.innerHTML = "("+red+","+green+","+blue+")";
+
+
+		});
+	}
+</script>
+</html>
