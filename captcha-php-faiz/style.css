@@ -1,0 +1,22 @@
+body{
+	font-family: "roboto";
+	background: #F4F4F4;
+}
+h1,h2,h3,p,a{
+	text-align: center;
+}
+.kotak{
+	margin: 10px auto;
+	background: #fff;
+	border-radius:5px;
+	border:1px solid #FFA800;
+	width: 400px;
+	padding: 20px 0px;
+}
+.kotak table tr td{
+	padding: 5px;
+}
+.kotak table tr td input{
+	padding: 5px;
+	font-size: 12pt;
+}
