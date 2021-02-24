@@ -37,9 +37,11 @@ for($i = 0; $i < strlen($font); $i++) {
     imagestring($imgChar, 5, 5, 0, $char,$text_color);
     // rotate the char image
     $imgChar = imagerotate($imgChar, $rotates[$rIdx], $bgChar);
+    // untuk memperbesar font, tapi hasilnya bureng
+    // $imgCharScaled = imagescale($imgChar, 30, 30, IMG_NEAREST_NEIGHBOUR);
 
     // merge the char image to base image according to its location
-    imagecopymerge($imgN, $imgChar, 5 + ($i*20), $coordY[$yIdx], 0, 0, 25, 25, 100);
+    imagecopymerge($imgN, $imgChar, 5 + ($i*20), $coordY[$yIdx], 0, 0, 45, 45, 100);
 }
 
 // function for generating random string
