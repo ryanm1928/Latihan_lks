@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .blok1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .hide{
+           width: 0;
+           height: 0;
+            transition: 1s;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="blok1" id="blok"></div>
+    
+    <button id="btn-hide" onclick="hide()">Button</button>
+</body>
+<script>
+    function hide()
+    {
+        let blok = document.getElementById('blok');
+        if(blok.style.display === "none")
+        {
+            blok.style.display = "blok";
+
+        }else{
+            blok.classList.add("hide") ;
+        }
+    }
+</script>
+</html>

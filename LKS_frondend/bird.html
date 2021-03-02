@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=
+  , initial-scale=1.0"
+    />
+    <title>Document</title>
+    <style>
+      #mycanvas {
+        width: 350px;
+        height: 500px;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <canvas id="mycanvas"></canvas>
+
+      <h3 id="text"></h3>
+      <h3 id="text2"></h3>
+    </center>
+  </body>
+  <script>
+    var canvas = document.getElementById("mycanvas");
+    var ctx = canvas.getContext("2d");
+    canvas.widht = canvas.scrollWidth;
+    canvas.height = canvas.scrollHeight;
+
+    let cW = canvas.width;
+    let cH = canvas.height;
+
+    let x = 40;
+    let y = 40;
+    let score = 0;
+    let bird = new Image();
+    bird.src = "img.png";
+
+    let bg = new Image();
+    bg.src = "bg.png";
+
+    let imgpipe = new Image();
+    imgpipe.src = "pipe.png";
+    let jump = new Audio();
+    jump.src = "jump.mp3";
+    let over = new Audio();
+    over.src = "over.wav";
+
+    let pipe = [];
+
+    function Play() {
+      function renderplayer() {
+        this.render = function () {
+          ctx.drawImage(bird, 10, y++);
+
+          if (y < 0) {
+            over.play();
+            clearInterval(interval);
+          }
+
+          if (y == 420) {
+            over.play();
+            clearInterval(interval);
+          }
+        };
+      }
+
+      function BG() {
+        this.render = function () {
+          ctx.drawImage(bg, x--, 0);
+          let text = (document.getElementById("text").innerHTML = x + "|" + y);
+          if (x == -1599) {
+            x = 0;
+          }
+        };
+      }
+      tambahPipe();
+
+      function tambahPipe() {
+        let x = 200;
+        let y = 0;
+        let w = 20;
+        let h = 300;
+
+        let acak = Math.floor(Math.random() * 250);
+        pipe.push({
+          x: x,
+          y: y - acak,
+          w: w,
+          h: h,
+        });
+      }
+
+      function renderTiang() {
+        for (let i = 0; i < pipe.length; i++) {
+          let p = pipe[i];
+
+          ctx.drawImage(imgpipe, p.x--, p.y);
+          ctx.drawImage(imgpipe, p.x--, p.y+p.h+200);
+          let text2 = (document.getElementById("text2").innerHTML =
+            p.x + "|" + p.y);
+          if (p.x == 0) {
+            tambahPipe();
+            // pipe.splice(i,1);
+          }
+        }
+      }
+
+      let player = new renderplayer();
+      let latar = new BG();
+
+      function renderAnimasi() {
+        ctx.save();
+        ctx.clearRect(0, 0, cW, cH);
+        latar.render();
+        renderTiang();
+        player.render();
+        ctx.restore();
+      }
+      let interval = setInterval(renderAnimasi, 8);
+    }
+
+    window.onload = function () {
+      Play();
+      ctx.canvas.addEventListener("click", function () {
+        y -= 70;
+        jump.play();
+      });
+    };
+  </script>
+</html>
