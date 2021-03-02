@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Poll;
 
 class MainController extends Controller
 {
@@ -13,11 +14,13 @@ class MainController extends Controller
 
     public function userPolls(Request $request)
     {
-        # code...
+        
     }
 
     public function managePolls()
     {
-        # code...
+        $polls = Poll::all();
+
+        return view("mg-polls.index", compact('polls'));
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{AuthController, MainController};
+use App\Http\Controllers\Admin\PollController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,7 @@ Route::get('/', function () {
 
 Route::get("home", [MainController::class, "home"])->name('home');
 Route::get("user-polls", [MainController::class, "userPolls"])->middleware(["auth","cekRole:user"]);
-Route::get("manage-polls", [MainController::class, "managePolls"])->middleware(["auth","cekRole:admin"]);
+Route::resource("manage-polls", PollController::class)->middleware(["auth","cekRole:admin"]);
 
 Route::get("login", [AuthController::class, "login"])->name('login');
 Route::post("login", [AuthController::class, "actionLogin"])->name('action-login');
