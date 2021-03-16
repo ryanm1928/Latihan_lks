@@ -20,8 +20,9 @@ Route::get('/', function () {
 
 Route::get("home", [MainController::class, "home"])->name('home');
 
-Route::get("user-polls", [MainController::class, "userPolls"])->middleware(["auth","cekRole:user"]);
+Route::get("user-polls", [MainController::class, "userPolls"])->name('user-polls.index')->middleware(["auth","cekRole:user"]);
 Route::get("user-polls/{poll}", [MainController::class, "takePoll"])->name("user-polls.take")->middleware(["auth","cekRole:user"]);
+Route::get("user-polls/{poll}/result", [MainController::class, "resultPoll"])->name("user-polls.result")->middleware(["auth","cekRole:user"]);
 Route::post("user-polls/{poll}", [MainController::class, "submitPoll"])->name("user-polls.submit")->middleware(["auth","cekRole:user"]);
 
 

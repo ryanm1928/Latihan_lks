@@ -12,6 +12,12 @@
     <li class="nav-item">
         <a href="{{ url('manage-polls') }}" class="nav-link">Manage Polls</a>
     </li>
+    <li class="nav-item">
+        <a href="{{ url('manage-polls') }}" class="nav-link">Manage Divisions</a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ url('manage-polls') }}" class="nav-link">Manage User</a>
+    </li>
     @endif
     @endauth
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Poll;
+use App\Models\{Poll, Vote};
 
 class MainController extends Controller
 {
@@ -19,9 +19,6 @@ class MainController extends Controller
                 ->with(['votes' => function($query) use($user) {
                     $query->where('user_id', $user->id);
                 }])
-                ->whereDoesntHave('votes', function($query) use($user) {
-                    $query->where("user_id", $user->id);
-                })
                 ->get();
         return view('pages.polls-agenda', [
             "polls"  => $polls  
@@ -40,6 +37,30 @@ class MainController extends Controller
 
     public function submitPoll(Request $request, $id)
     {
-        dd($request->all());
+        $user = auth()->user();
+        $vote = new Vote;
+        $vote->choice_id = $request->choice;
+        $vote->user_id = $user->id;
+        $vote->poll_id = $id;
+        $vote->division_id = $user->division_id;
+
+        if($vote->save()) {
+            return redirect(route('user-polls.index'));
+        } else {
+            abort(402);
+        }
+    }
+
+    public function resultPoll($id)
+    {
+        $user = auth()->user();
+        $poll = Poll::where('id',$id)
+                    ->with(['votes' => function($query) use($user) {
+                        $query->where('user_id', $user->id);
+                    }])
+                    ->first();
+        return view('pages.poll-result', [
+            "poll"  => $poll
+        ]);
     }
 }

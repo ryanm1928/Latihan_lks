@@ -37,6 +37,21 @@
             @endfor
         </div>
 
+        <div>
+            <h4>Divisions</h4>
+            @foreach($divisions as $key => $division)
+            <div class="input-group">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="checkbox" name="division[]" value="{{ $division->id }}" aria-label="Checkbox for following text input">
+                  </div>
+                <label class="control-label">Divisi {{ $division->name }}</label>
+                {{-- <input type="text" class="form-control" aria-label="Text input with checkbox">
+                <input type="checkbox" name="division[]" value="{{$division->id}}" class="form-control" required>
+                <label >Divisi {{ $division->name }}</label> --}}
+            </div>
+            @endforeach
+        </div>
+
         <button type="submit">Submit</button>
         </form>
     </div>

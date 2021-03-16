@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Poll;
+use App\Models\{Poll, Division};
 
 class PollController extends Controller
 {
@@ -26,7 +26,10 @@ class PollController extends Controller
      */
     public function create()
     {
-        return view("mg_polls.create");
+        $divisions = Division::all();
+        return view("mg_polls.create", [
+            "divisions"     =>  $divisions
+        ]);
     }
 
     /**
@@ -37,8 +40,7 @@ class PollController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-
+     
         $poll = new \App\Models\Poll;
         $poll->title = $request->title;
         $poll->description = $request->description;

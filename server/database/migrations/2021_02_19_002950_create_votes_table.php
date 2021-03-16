@@ -22,10 +22,10 @@ class CreateVotesTable extends Migration
             
             $table->timestamps();
 
-            $table->foreign("choice_id")->references("choices")->on("id");
-            $table->foreign("user_id")->references("users")->on("id");
-            $table->foreign("poll_id")->references("polls")->on("id");
-            $table->foreign("division_id")->references("divisions")->on("id");
+            $table->foreign("choice_id")->references("id")->on("choices");
+            $table->foreign("user_id")->references("id")->on("users");
+            $table->foreign("poll_id")->references("id")->on("polls");
+            $table->foreign("division_id")->references("id")->on("divisions");
         });
     }
 
