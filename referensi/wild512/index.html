@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wild 512</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <section class="score">
+            <h1>512</h1>
+            <div class="flex-grow"></div>
+            <div class="current-score">
+                <h3>0</h3>
+            </div>
+            <div class="best-score">
+                <h3>256</h3>
+            </div>
+        </section>
+
+        <section class="action">
+            <button class="sound" onclick="triggerSound()">Enable Sound</button>
+            <button class="new-game" onclick="playAgain()">New Game</button>
+        </section>
+
+        <section class="board">
+
+        </section>
+
+        <audio id="sound">
+            <source src="music.mp3">
+        </audio>
+
+        <section class="overlay"></section>
+
+        <section class="card-overlay" id="game-over">
+            <div class="card">
+                <h1>Game Over</h1>
+                <div class="card-action">
+                    <button onclick="playAgain()">Play Again</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="card-overlay" id="game-win">
+            <div class="card">
+                <h1>Congratulation</h1>
+                <div class="card-action">
+                    <button onclick="playAgain()">Play Again</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="card-overlay" id="welcome-game">
+            <div class="card">
+                <h1>Wild 512</h1>
+                <div class="card-action">
+                    <button onclick="newGameClick()">New Game</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

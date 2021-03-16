@@ -25,12 +25,12 @@ get_header();
 
 			// Load posts loop.
 			while ( have_posts() ) {
-				the_post();
-				get_template_part( 'template-parts/content/content' );
+				// the_post();
+				// get_template_part( 'template-parts/content/content' );
 			}
 
 			// Previous/next page navigation.
-			twentynineteen_the_posts_navigation();
+			// twentynineteen_the_posts_navigation();
 
 		} else {
 

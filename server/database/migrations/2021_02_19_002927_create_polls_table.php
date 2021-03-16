@@ -19,10 +19,12 @@ class CreatePollsTable extends Migration
             $table->text("description");
             $table->dateTime("deadline");
             $table->unsignedBigInteger("created_by");
+            $table->unsignedBigInteger('division_id');
             $table->softDeletes();
             $table->timestamps();
 
             $table->foreign("created_by")->references("users")->on("id");
+            $table->foreign("division_id")->references("divisions")->on("id");
 
         });
     }

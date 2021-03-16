@@ -14,13 +14,32 @@ class MainController extends Controller
 
     public function userPolls(Request $request)
     {
-        
+        $user = auth()->user();
+        $polls = Poll::where('deadline', ">=", date("Y-m-d"))
+                ->with(['votes' => function($query) use($user) {
+                    $query->where('user_id', $user->id);
+                }])
+                ->whereDoesntHave('votes', function($query) use($user) {
+                    $query->where("user_id", $user->id);
+                })
+                ->get();
+        return view('pages.polls-agenda', [
+            "polls"  => $polls  
+        ]);
     }
 
-    public function managePolls()
+    public function takePoll($id)
     {
-        $polls = Poll::all();
+        $poll = Poll::findOrFail($id);
 
-        return view("mg-polls.index", compact('polls'));
+        return view('pages.poll-take', [
+            "poll"  => $poll
+        ]);
+    }
+
+
+    public function submitPoll(Request $request, $id)
+    {
+        dd($request->all());
     }
 }
